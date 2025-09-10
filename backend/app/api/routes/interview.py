@@ -322,6 +322,7 @@ async def persona_reply(
         messages.append(ChatMessage(role="user", content=transcript))
         try:
             chat_req = ChatRequest(messages=messages)
+            chat_req.model = "deepseek/deepseek-chat-v3.1:free"
             ai_reply = await openrouter_service.generate_text(chat_req)
             reply_text = (ai_reply.message or "").strip()
             if not reply_text:
