@@ -22,8 +22,8 @@ class Settings(BaseSettings):
         "http://localhost:3000", 
         "http://localhost:5173", 
         "http://127.0.0.1:5173",
-        "https://empathy360be.vercel.app",  # Your backend
-        "https://empathy360fe.vercel.app",  # Your frontend (will be generated)
+        "https://empathize360backend.vercel.app",  # Your backend
+        "https://empathize360frontend.vercel.app",  # Your frontend (will be generated)
         # "*"  # For now, remove this in production
     ]
     
