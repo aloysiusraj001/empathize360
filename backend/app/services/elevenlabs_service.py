@@ -18,7 +18,7 @@ class ElevenLabsService:
             voice_id = request.voice_id or self.default_voice_id
             payload = {
                 "text": request.text,
-                "model_id": request.model_id or "eleven_monolingual_v1",
+                "model_id": request.model_id or "eleven_multilingual_v2",
                 "voice_settings": request.voice_settings or {
                     "stability": 0.5,
                     "similarity_boost": 0.75,
@@ -57,7 +57,7 @@ class ElevenLabsService:
                         audio_base64=audio_base64,  # Return base64 data
                         audio_url=None,  # No longer using file URLs
                         voice_id=voice_id,
-                        model_id=request.model_id or "eleven_monolingual_v1"
+                        model_id=request.model_id or "eleven_multilingual_v2"
                     )
                     
         except Exception as e:
