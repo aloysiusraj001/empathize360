@@ -404,20 +404,20 @@ async def reply_to_audio(
     # Persona-aware voice selection
     voice_id = None
     voice_settings = None
-    model_id = None
     if persona_id:
         try:
-        p = load_persona(persona_id)
-        vid = (p.get("voice_id") or "").strip()
-        voice_id = vid if vid and not vid.startswith("TBD_") else None
-        voice_settings = p.get("voice_settings")
-        model_id = p.get("model_id")  # <-- Add this line
-    except Exception:
-        pass
+            p = load_persona(persona_id)
+            vid = (p.get("voice_id") or "").strip()
+            voice_id = vid if vid and not vid.startswith("TBD_") else None
+            voice_settings = p.get("voice_settings")
+            model_id = p.get("model_id")  # <-- Add this line
+        except Exception:
+            pass
+
     from app.models.schemas import TTSRequest
-    tts_req = TTSRequest(text=text, voice_id=voice_id, voice_settings=voice_settings, model_id=model_id)  # <-- Add model_id param
+    tts_req = TTSRequest(text=text, voice_id=voice_id, voice_settings=voice_settings, model_id=model_id) # <--add model_id
     tts_resp = await elevenlabs_service.text_to_speech(tts_req)
-    
+
     # Return the complete response including base64 audio
     return {
         "audio_base64": tts_resp.audio_base64,
