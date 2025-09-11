@@ -1010,6 +1010,9 @@
       "similarity_boost": 0.85,
       "style": 0,
       "use_speaker_boost": true
+    },
+    "tts_config": {
+    "model_id": "eleven_multilingual_v2"
     }
   },
   {
