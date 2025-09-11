@@ -406,7 +406,7 @@ async def reply_to_audio(
     voice_settings = None
     model_id = None
     if persona_id:
-    try:
+        try:
         p = load_persona(persona_id)
         vid = (p.get("voice_id") or "").strip()
         voice_id = vid if vid and not vid.startswith("TBD_") else None
