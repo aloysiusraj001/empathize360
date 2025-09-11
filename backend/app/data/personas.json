@@ -1006,9 +1006,9 @@
     "goals_today": "Pick up flour for workshop; WhatsApp photos to grandkids.",
     "voice_id": "OlBRrVAItyi00MuGMbna",
     "voice_settings": {
-      "_stability_commented": 0.52,
-      "_similarity_boost_commented": 0.9,
-      "_style_commented": 0.14,
+      "stability": 0.52,
+      "similarity_boost": 0.9,
+      "style": 0.14,
       "use_speaker_boost": true
     }
   },
