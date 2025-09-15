@@ -54,8 +54,8 @@ class AssemblyAIService:
          #   " ah ": " ",
        # }
         
-        for filler, replacement in filler_replacements.items():
-            text = text.replace(filler, replacement)
+       # for filler, replacement in filler_replacements.items():
+        #    text = text.replace(filler, replacement)
         
         # Clean up excessive spaces
         text = " ".join(text.split())
