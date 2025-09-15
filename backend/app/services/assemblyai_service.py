@@ -47,12 +47,12 @@ class AssemblyAIService:
         text = transcript_result.text.strip()
         
         # Handle non-lexical fillers that AssemblyAI might transcribe
-        filler_replacements = {
-            " um ": " ",
-            " uh ": " ",
-            " er ": " ",
-            " ah ": " ",
-        }
+        #filler_replacements = {
+         #   " um ": " ",
+         #   " uh ": " ",
+        #    " er ": " ",
+         #   " ah ": " ",
+       # }
         
         for filler, replacement in filler_replacements.items():
             text = text.replace(filler, replacement)
