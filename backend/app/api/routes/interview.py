@@ -1,4 +1,3 @@
-# backend\app\api\routes\interview.py
 from fastapi import APIRouter, File, UploadFile, Depends, HTTPException, Form
 from app.utils.auth import api_key_auth
 from app.services.assemblyai_service import assemblyai_service
@@ -13,6 +12,7 @@ from typing import Dict, List, Optional
 import asyncio
 from pathlib import Path
 import re
+import traceback   # <- ADDED
 
 def _bullets(items):
     if not items: 
@@ -301,7 +301,6 @@ async def persona_reply(
 
     persona_desc = "".join(sections)
 
-
     # Build message list with session memory (if any)
     messages = [ChatMessage(role="system", content=persona_desc)]
     if session_id and session_id in interview_sessions:
@@ -327,8 +326,10 @@ async def persona_reply(
             reply_text = (ai_reply.message or "").strip()
             if not reply_text:
                 reply_text = "Could you rephrase that? I want to make sure I answer you properly."
-        except Exception:
-            reply_text = "I'm sorry, I’m having trouble responding. Could you try that once more?"
+        except Exception as e:
+            print("Error in persona_reply:", str(e))
+            traceback.print_exc()
+            reply_text = "I'm sorry, I'm having trouble responding. Could you try that once more."
 
     # Save to session
     if session_id and session_id in interview_sessions:
@@ -341,8 +342,6 @@ async def persona_reply(
     return {"reply": reply_text,
             "session_id": session_id,
             "turn_number": session["turn_count"] if session_id and session_id in interview_sessions else 0}
-
-
 
 @router.post("/end-session")
 async def end_interview_session(
